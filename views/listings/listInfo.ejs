@@ -1,0 +1,96 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h2 style="margin-left:20px;">Listing Detail:</h2>
+    <div class="individual-list-detail-container">
+        <div class="individual-list-detail">
+            <img class="individual-list-image" src="<%=individualList.image.url%>" alt="Please Provide Proper Image">
+            <i>owned by <%=individualList.owner.username%></i>
+            <b><%= individualList.title %></b>
+            <%=individualList.description%> <br>
+            ₹<%=individualList.price.toLocaleString("en-IN")%> / night<br>
+            <%=individualList.location%> <br>
+            <%=individualList.country%> <br><br>
+            <% if(reqUser && individualList.owner._id.equals(reqUser._id)){ %>  
+            <div>
+                <form style="display:inline-block;" action="/editList/<%=individualList._id%>"><button style="cursor:pointer;" class="edit-btn">Edit</button></form> &nbsp;
+                <form style="display: inline-block;" action="/listing/<%=individualList._id%>?_method=DELETE" method="post"><button class="delete-btn" style="cursor:pointer;">Delete</button></form>
+            </div>
+            <% } %>
+        </div>
+        <% if(reqUser){ %>
+        <div class="individual-list-review-form">
+            <h3 style="margin-bottom: 10px;">Add a review</h3>
+            <form method="post" action="/listing/<%=individualList._id%>/review" id="review_form" novalidate enctype="">
+                <label>Rating</label><br>
+
+                <div style="cursor: pointer; display: inline-block; margin-top:10px;">
+                <label for="firstStar"><i class="fa-regular fa-star rating_input_stars"></i></label>
+                <input type="radio" name="review[rating]" value="1" id="firstStar" class="allStars">
+                <label for="secondStar"><i class="fa-regular fa-star rating_input_stars"></i></label>
+                <input type="radio" name="review[rating]" value="2" id="secondStar" class="allStars">
+                <label for="thirdStar"><i class="fa-regular fa-star rating_input_stars"></i></label>
+                <input type="radio" name="review[rating]" value="3" id="thirdStar" class="allStars">
+                <label for="fourthStar"><i class="fa-regular fa-star rating_input_stars"></i></label>
+                <input type="radio" name="review[rating]" value="4" id="fourthStar" class="allStars">
+                <label for="fifthStar"><i class="fa-regular fa-star rating_input_stars"></i></label>
+                <input type="radio" name="review[rating]" value="5" id="fifthStar" class="allStars">
+                </div>
+                <br><br>
+
+                <label for="comment">Comment</label><br>
+                <textarea name="review[comment]" id="review_comment" required></textarea>
+                <i class="fa-solid fa-circle-exclamation" id="error13"></i><i class="fa-solid fa-check" id="tick13"></i>
+                <br>
+                <button class="review-add-btn">Add Review <i class="fa-brands fa-telegram" style="font-size: 20px;"></i></button>
+            </form>
+        </div>
+        <% } %>
+        <div class="individual-list-reviews-display">
+            <% if(individualList.reviews.length > 0){ %> 
+            <h3 id="allReviewsTitle">All Reviews</h3>
+            <% } %>
+            <% for(review of individualList.reviews){ %>
+                <div class="individual-list-review-block">
+                    <h4 style="margin:0"><%=review.user.username%></h4>
+                    <% for(let i=1;i<=5;i++){ %>
+                        <%if(i <= review.rating){%>
+                            <i class="fa-solid fa-star"></i>
+                        <% } else {%>
+                            <i class="fa-regular fa-star"></i>
+                        <%}%>
+                    <% } %>
+                    <br>
+                    <%=review.comment%> <br>
+                    <form action="/review/<%=review._id%>/<%= individualList._id %>?_method=DELETE" id="review-delete-button-form" style="display: inline-block;" method="post"><button class="review-delete-btn">Delete</button></form>
+                </div>
+            <% } %>
+        </div>
+        <div id="individual-list-location">
+            <h3 style="margin-top: 0;">Where you'll be</h3>
+            <div id="map"></div>
+        </div>
+    </div>
+    <% if(reqUser){ %>
+    <script src="/js/reviewFormvalidate.js"></script>
+    <script src="/js/starRating.js"></script>
+    <% } %>
+    <script>
+        const map_api = "<%=process.env.MAP_API%>"
+        mapboxgl.accessToken = map_api;
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            center: [ <%=individualList.geometry.coordinates[0]%>,<%=individualList.geometry.coordinates[1]%> ], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+            zoom: 10 // starting zoom
+        });
+
+        const ele = document.createElement("div");
+        const innerEle = document.createElement("div");
+        ele.className = "marker";
+        innerEle.className = "innerMarker";
+        ele.append(innerEle);
+        const marker1 = new mapboxgl.Marker(ele)
+        .setLngLat([<%=individualList.geometry.coordinates[0]%>,<%=individualList.geometry.coordinates[1]%>])
+        .addTo(map);
+
+    </script>   
+</body>

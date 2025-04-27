@@ -1,0 +1,18 @@
+<% if(success && success.length){%>
+    <div id="flash-success-message-div">
+        <div id="flash-success-message">
+            <p id= "flash_para"><%=success%></p>
+            <div id="flash-message-cross-mark"> X </div>
+        </div>
+    </div>
+    <script src="/js/flashCrossMark.js"></script>
+<% } %>
+<% if(error && error.length){ %>
+    <div id="flash-error-message-div">
+        <div id="flash-error-message">
+            <p id= "flash_para"><%=error%></p>
+            <div id="flash-message-cross-mark"> X </div>
+        </div>
+    </div>
+    <script src="/js/flashCrossMark.js"></script>
+<% } %>

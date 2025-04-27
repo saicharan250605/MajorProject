@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="form-div">
+        <h1 id="signUpFormHeading">SignUp on Wanderlust</h1>
+        <form action="/signup" method="post" class="signUpForm" novalidate >
+            <div>
+                <label for="hi1"class="form-labels">Username</label>
+                <input name="signupUser[username]" id="hi1" type="text" placeholder="Enter Username" class="all-form-inputs" required >
+                <i class="fa-solid fa-circle-exclamation " id="error14"></i><i class="fa-solid fa-check" id="tick14"></i>
+            </div><br>
+
+            <div>
+                <label for="hi2"class="form-labels">Email</label>
+                <input name="signupUser[email]" id="hi2" type="text" placeholder="Enter Email"  class="all-form-inputs" required></input>
+                <i class="fa-solid fa-circle-exclamation" id="error15"></i><i class="fa-solid fa-check" id="tick15"></i>
+            </div><br>
+            
+            <div>
+                <label for="hi3"class="form-labels">Password</label>
+                <input name="signupUser[password]" id="hi3" type="password" placeholder="Enter password" class="all-form-inputs" >
+                <i class="fa-solid fa-circle-exclamation" id="error16"></i><i class="fa-solid fa-check" id="tick16"></i>
+            </div><br>
+
+            <button class="signUp-btn">SignUp</button>
+        </form>
+    </div>
+    <script src="/js/signUpformValidating.js"></script>
+</body>

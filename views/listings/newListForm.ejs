@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h2 style="margin-left:15px; margin-top: 5px;">Create a New Listing</h2>
+    <div class="form-div">
+        <form action="/newList" method="post" class="newuser-form" novalidate enctype="multipart/form-data">
+            <div>
+                <label for="listing[title]"class="form-labels"> Title:</label>
+                <input name="listing[title]" id="listing[title]" type="text" placeholder="Enter title" class="all-form-inputs" required >
+                <i class="fa-solid fa-circle-exclamation " id="error1"></i><i class="fa-solid fa-check" id="tick1"></i>
+            </div><br>
+
+            <div>
+                <label for="listing[description]"class="form-labels">Description:</label>
+                <textarea name="listing[description]" placeholder="Enter description" id="listing[description]" class="all-form-inputs" required></textarea>
+                <i class="fa-solid fa-circle-exclamation" id="error2"></i><i class="fa-solid fa-check" id="tick2"></i>
+            </div><br>
+            
+            <!-- <div>
+                <label for="listing[image]"class="form-labels">Image:</label>
+                <input name="listing[image]" type="text"id="listing[image]" placeholder="Enter image url/link" class="all-form-inputs" >
+                <i class="fa-solid fa-circle-exclamation" id="error3"></i><i class="fa-solid fa-check" id="tick3"></i>
+            </div><br> -->
+
+            <div>
+                <label for="listing[image]"class="form-labels">Image:</label>
+                <input name="listing[image]" type="file"id="listing[image]" class="all-form-inputs listing_image" >
+                <i class="fa-solid fa-circle-exclamation" id="error3"></i><i class="fa-solid fa-check" id="tick3"></i>
+            </div><br>
+            <div id="previewDiv"><img height="100%" width="100%" id="preview" ></div>
+
+            <div class="form-price-and-country">
+                <div class="form-price">
+                    <label for="listing[price]"class="form-labels">Price:</label>
+                    <input name="listing[price]"id="listing[price]" placeholder="Enter price" class="all-form-inputs" required>
+                    <i class="fa-solid fa-circle-exclamation" id="error4"></i><i class="fa-solid fa-check" id="tick4"></i>
+                </div>
+                <div class="form-country">
+                    <label for="listing[country]"class="form-labels">Country: </label>
+                    <input name="listing[country]" type="text" id="listing[country]" placeholder="Enter country name" class="all-form-inputs" required>
+                    <i class="fa-solid fa-circle-exclamation" id="error5"></i><i class="fa-solid fa-check" id="tick5"></i>
+                </div>
+            </div><br>
+
+            <div>
+                <label for="listing[location]"class="form-labels">Location:</label>
+                <input name="listing[location]" type="text" id="listing[location]" placeholder="Enter location" class="all-form-inputs" required>
+                <i class="fa-solid fa-circle-exclamation" id="error6"></i><i class="fa-solid fa-check" id="tick6"></i>
+            </div><br>
+            <button class="add-btn">Add</button>
+        </form>
+    </div>
+    <script src="/js/formValidating.js"></script>
+</body>

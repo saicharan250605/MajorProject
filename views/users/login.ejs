@@ -1,0 +1,22 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="form-div">
+        <h1 id="loginFormHeading">Login</h1>
+        <form action="/login" method="post" class="signUpForm" novalidate >
+            <div>
+                <label for="hi4"class="form-labels">Username</label>
+                <input name="username" id="hi4" type="text" placeholder="Enter Username" class="all-form-inputs" required >
+                <i class="fa-solid fa-circle-exclamation " id="error17"></i><i class="fa-solid fa-check" id="tick18"></i>
+            </div><br>
+            <div>
+                <label for="hi5"class="form-labels">Password</label>
+                <input name="password" id="hi5" type="password" placeholder="Enter password" class="all-form-inputs" >
+                <i class="fa-solid fa-circle-exclamation" id="error17"></i><i class="fa-solid fa-check" id="tick18"></i>
+            </div><br>
+
+            <button class="signUp-btn">Login</button>
+        </form>
+    </div>
+    <!-- JS FILE FOR VALIDATING LOGIN AND SIGN UP FORM IS SAME -->
+    <script src="/js/signUpformValidating.js"></script>
+</body>

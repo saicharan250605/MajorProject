@@ -1,0 +1,19 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="homepage-images-info">
+        <h2 id="allListingsHeading">All Listings</h2>
+        <% for(list of lists){ %>
+            <div class="individual-resort-cards">
+                <a href="http://localhost:8000/listInfo/<%=list._id%>">
+                    <div class="image-resort-div">
+                        <img class="image-resort" src="<%=list.image.url%>" alt="Provide Proper Image">
+                    </div>
+                    <div class="info-resort">
+                        <div class="resort-title"><%=list.title%></div>
+                        <div class="resort-price">₹<%= list.price.toLocaleString("en-IN")%> / night</div>
+                    </div>
+                </a>
+            </div>
+        <%}%>
+    </div>
+</body>

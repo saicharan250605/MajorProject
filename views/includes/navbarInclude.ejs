@@ -1,0 +1,21 @@
+<div class="navbar">
+    <div class="navbar-first-part">
+        <div><i class="fa-regular fa-compass"></i></div>
+        <div class="navbar-first-part-text"><a <% if(isRouteAllLists){ %>id="isRouteAllLists"<% } %> href="/allLists">All Listings</a></div>
+        <div class="navbar-first-part-text"><a href="/newList">Add New Listing</a></div>
+        <div class="user-register-login-panel">
+           <% if(!reqUser){ %>
+                <div class="navbar-first-part-text"><a href="/signup"><b>SignUp</b></a></div>
+                <div class="navbar-first-part-text"><a href="/login"><b>LogIn</b></a></div>
+            <% }else{ %>
+                <div class="navbar-first-part-text"><a href="/logout">LogOut</a></div>
+            <% } %>
+        </div>
+    </div>
+    <div class="navbar-second-part">
+        <input id="menubarCheckbox" type="checkbox">
+        <label for="menubarCheckbox">
+            <div id="menubar-homepage"><i class="fa-solid fa-bars"></i></div>
+        </label>
+    </div>
+</div>

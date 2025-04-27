@@ -1,0 +1,521 @@
+html{
+    height: 100vh;
+}
+body{
+    background-color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+/* FORMS TEXT AREA STYLING*/
+textarea{
+    width:400px;
+    height:50px;
+}
+
+/* NAVBAR STYLING */
+
+.navbar{
+    height:45px;
+    width:100%;
+    background-color: white;
+    display:flex;
+    position:sticky;
+    top:0;
+    left:0;
+    z-index: 5;
+    transition:all 0.3s linear;
+}
+.navbar-first-part{
+    height:100%;
+    width:94%;
+    display: flex;
+    align-items: center;
+    gap:20px;
+    font-size:1.1rem;
+    padding-left: 10px;
+}
+.user-register-login-panel{
+display: flex;
+margin-left: auto;
+gap:20px;
+box-sizing: border-box;
+}
+.navbar-second-part{
+    display:flex;
+    height:100%;
+    width: 6%;
+    align-items:top;
+    justify-content: end;
+    box-sizing: border-box;
+    padding-right: 25px;
+    padding-top:5px;
+    font-size: 1.45rem;
+}
+.fa-compass{
+    color:#fe424d;
+    scale: 1.4;
+}   
+#menubarCheckbox, #menubar-homepage{
+    display:none;
+}
+#menubar-homepage{
+    padding:2px;
+    border-radius: 5px;
+    cursor:pointer;
+}
+#menubarCheckbox:checked + label > #menubar-homepage{
+    border:2px solid rgba(0, 0, 0, 0.683);
+}
+
+/* READJUSTING BASED ON SCREEN SIZE */
+
+@media(max-width:976px){
+    #signUpFormHeading{
+        width:95% !important;
+        margin-left:250px !important;
+    }
+}
+@media(max-width:550px){
+    #menubar-homepage{
+        display:block ;
+    }
+    .navbar-first-part-text{
+        visibility:hidden;
+    }
+    .user-register-login-panel{
+        margin-left:0px !important;
+    }
+    .newuser-form,#edit-page-form,.signUpForm{
+        width:75% !important;
+    }
+    .form-price-and-country{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    .form-price,.form-country{
+        width:100% !important;
+    }
+    .individual-list-detail{
+        width:75% !important;
+    }
+    input[id="listing[price]"]{
+        width:90% !important;
+    }
+    input[id="listing[country]"]{
+        width:90% !important;
+    }
+    .individual-list-review-form{
+        width:75% !important;
+    }
+    .individual-list-review-block{
+        width:100% !important;
+    }
+    #flash_para{
+        margin:0px 100px 0px 0px !important;
+    }    
+    #signUpFormHeading{
+        width:95% !important;
+        margin-left:10px !important;
+    }
+    #loginFormHeading{
+        width:75% !important;
+    }
+    #individual-list-location{
+        width:80% !important;
+    }
+}
+
+/* FOOTER STYLING */
+
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #ebebeb;
+    padding-top:5px;
+    font-size: 0.8rem;
+    margin-top:auto;
+}
+.footerDiv{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    gap:7px;
+    padding:5px 0px 5px 0px; 
+}
+.footerLinks:hover{
+    text-decoration: underline;
+}
+.social_media{
+    margin:0px 5px 0px 5px;
+    cursor:pointer;
+    font-size: 1rem;
+}
+ 
+/* SETTING ONLY HOME PAGE AS FLEX CONTAINER SO THAT EDIT PAGE OR ANY OTHER PAGE WONT GET AFFECTED*/
+.homepage-images-info{
+    display:flex;
+    flex-wrap: wrap;    
+    padding:20px;
+    justify-content: space-around;
+    row-gap: 40px;
+    margin-top:-15px;
+}
+
+/* IMAGE STYLING IN HOME PAGE */
+
+.image-resort-div{
+    height:20rem;
+    width:20rem;
+    border-radius: 15px;
+    position:relative;
+}
+.image-resort{
+    height:inherit;
+    width:inherit;
+    border-radius: 15px;
+}
+.image-resort-div::before{
+    content:"";
+    height:20rem;
+    width:20rem;
+    position:absolute;
+    top:0;
+    left:0;
+    border-radius: 15px;
+    background-color:rgba(255, 255, 255,0);
+}
+.image-resort-div:hover::before{
+    background-color:rgba(255, 255, 255,0.2);
+}
+.individual-resort-cards{
+    border-radius: 15px;
+    background-color:rgba(214, 205, 205, 0.139);
+}
+
+/* MAKING "All Listings" heading width 100% so that it can occupy one whole row in container*/
+#allListingsHeading{
+    width:100%;
+    margin:10px;
+}
+
+/* STYLING INFO OF RESORT BELOW IMAGES */
+.info-resort{
+    padding:10px 0px 10px 10px;
+}
+.resort-title{
+    margin-bottom:5px;
+}
+
+/* STYLING NEW FORM PAGE*/
+
+.form-div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 35px;
+}
+.newuser-form,#edit-page-form,.signUpForm{
+    display: flex;
+    width:35%;
+    flex-direction: column;
+}
+.form-labels{
+    width:100%;
+}
+.all-form-inputs{
+    width:90%;
+    height:30px;
+    border-radius: 3px;
+    border:1px solid rgba(128, 128, 128, 0.856);
+}
+.all-form-inputs:focus{
+    /* outline: none; */
+    border:2px solid rgba(0, 0, 0, 0.3);   
+}
+.fa-circle-exclamation{
+    vertical-align:top;
+    color:red
+}
+#error1,#error2,#error3,#error4,#error5,#error6,#error7,#error8,#error9,
+#error10,#error11,#error12,#error13,#error14,#error15,#error16,#error17,#error18{
+    display: none;
+}
+.fa-check{
+    vertical-align:top;
+    color:green;
+}
+#tick1,#tick2,#tick3,#tick4,#tick5,#tick6,#tick7,#tick8,#tick9,
+#tick10,#tick11,#tick12,#tick13,#tick14,#tick15,#tick16,#tick17,#tick18{
+    display: none;
+}
+.form-price-and-country{
+    display: flex;
+    column-gap: 7%;
+}
+.form-price,.form-country{
+    width:45%;
+}
+input[id="listing[price]"]{
+    width:85%;
+}
+input[id="listing[country]"]{
+    width:85%;
+}
+.add-btn,.edit-btn{
+    background-color: #fe424d;
+    width:80px;
+    color: white;
+    border:none;
+    font-size:18px;
+    border-radius: 5px;
+    padding:5px 10px 5px 10px;
+    cursor: pointer;
+}
+
+/* STYLING EDIT FORM PAGE */
+
+#edit-page-form{
+    margin-top:20px;
+}
+.delete-btn{
+    background-color:black;
+    width:80px;
+    color: white;
+    border:none;
+    font-size:18px;
+    border-radius: 5px;
+    padding:5px 10px 5px 10px;
+    cursor: pointer;
+}
+
+/* STYLING LIST INFO PAGE*/
+
+.individual-list-detail-container{
+display: flex;
+/* justify-content: center; */
+/* background-color: cyan; */
+align-items: center;
+flex-direction: column;
+margin-bottom: 35px;
+row-gap: 20px;
+}
+.individual-list-detail{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:40%;
+    border-radius: 15px;
+    font-weight:lighter;
+}
+.individual-list-image{
+    height:20rem;
+    width:100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+/*REVIEW FORM STYLING */
+
+.individual-list-review-form{
+    width:40%;
+}
+.review-add-btn{
+    background-color:#1245df;
+    color: white;
+    border:none;
+    font-size:15px;
+    border-radius: 13px;
+    padding: 4px 15px 4px 15px;
+    cursor: pointer;
+}
+#review_comment{
+    height:150px;
+    margin-bottom:5px;
+    width:90%;
+}
+#review_rating{
+    appearance: none;
+    width:50%;
+    cursor: pointer;
+}
+#review_rating::-webkit-slider-runnable-track{
+    background-color:#ddd;
+    height:5px;
+    border-radius: 5px;
+}
+#review_rating::-webkit-slider-thumb{
+    appearance: none;
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    margin-top: -4px;
+    background-color:#1245df;
+}
+/*reviews display styling*/
+#allReviewsTitle{
+    width:100%;
+    padding-left:5px;
+    margin-bottom:5px;
+}
+.individual-list-reviews-display{
+    width:70%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    row-gap:15px;
+    column-gap: 25px;
+}
+/*individual review block styling*/
+.individual-list-review-block{
+    width:30%;
+    padding-left:10px;
+    border:1px solid black;
+    border-radius: 5px;
+}
+.review-delete-btn{
+    background-color:black;
+    width:60px;
+    color: white;
+    border:none;
+    font-size:14px;
+    border-radius: 5px;
+    padding:5px 5px 5px 5px;
+    cursor: pointer;
+}
+#review-delete-button-form{
+    margin-left:180px;
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+
+/* ERROR MESSAGE STYLING */
+#error-message-div{
+    text-align: center; 
+}
+#error-message{
+    display: inline-block;
+    padding:10px;
+    border-radius: 5px;
+    background-color:rgba(255,0,0,0.2);
+    color:maroon;
+    border:1px solid maroon;
+}
+
+/* FLAS MESSAGE STYLING */
+#flash-success-message-div, #flash-error-message-div{
+    text-align: center;
+    margin:0;
+}
+#flash-message-cross-mark{
+    display: inline-block;
+    font-size:20px;
+    margin:0;
+    cursor:pointer;
+    color:grey;
+}
+#flash_para{
+    display: inline-block;
+    margin:0 250px 0 0;
+}
+#flash-success-message{
+    display: inline-block;
+    padding:10px;
+    border-radius: 5px;
+    background-color:rgba(0,255,0,0.2);
+    color:green;
+    border:1px solid green;   
+    margin:0;
+}
+#flash-error-message{
+    display: inline-block;
+    padding:10px;
+    border-radius: 5px;
+    background-color:rgba(255,0,0,0.2);
+    color:maroon;
+    border:1px solid maroon; 
+    margin:0;
+}
+
+/* SIGN UP FORM STYLING */
+
+.signUp-btn{
+    background-color:#1a6b1f;
+    width:80px;
+    color: white;
+    border:none;
+    font-size:18px;
+    border-radius: 5px;
+    padding:5px 10px 5px 10px;
+    cursor: pointer;
+}
+#signUpFormHeading{
+    margin-top: 5px;    
+    width:35%;
+}
+#loginFormHeading{
+    margin-top: 5px;
+    width:35%;
+}
+
+/* REVIEW GIVING STARS STYLING */
+
+.allStars{
+    display:none;
+}
+.rating_input_stars{
+    cursor:pointer;
+}
+
+/* MAP STYLING */
+
+#individual-list-location{
+    width:40%;
+    height:380px;
+}
+#map{
+    width:100%; 
+    height:90%;
+}
+@keyframes markerBlinker {
+    from{
+        background-color:rgba(255,0,0, 0.2);
+    }
+    50%{
+        background-color: rgba(255,0,0,0);
+    }
+    to{
+        background-color:rgba(255,0,0, 0.2);
+    }
+}
+.marker{ 
+    width:70px;
+    height:70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgba(255,0,0, 0.2);
+    animation: markerBlinker 1.5s linear 0s infinite normal;
+}
+.innerMarker{
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    cursor:pointer;
+    background-image:url(/images/airbnbLogo.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#isRouteAllLists{
+    color:#fe424d;
+    text-decoration:underline; 
+}
