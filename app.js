@@ -164,6 +164,10 @@ async function isReviewOwner(req,res,next){
 
 //////////////////////// LIST DETAILS ROUTES /////////////////////////
 
+app.get("",(req,res)=>{
+    res.redirect("/allLists");
+});
+
 app.get("/allLists",asyncWrap(async (req,res)=>{
     let result= await model.find();
     res.render("listings/allLists.ejs",{lists: result});
