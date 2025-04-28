@@ -234,6 +234,12 @@ app.patch("/editList/:listId",isLoggedIn,isOwner,upload.single("listing[image]")
     console.log("hello");
     let {listId}=req.params;
     let editedOne=req.body.listing;
+    let response = await geoCodingClient.forwardGeocode({
+        query: `${req.body.listing.location},${req.body.listing.country}`,
+        limit: 1
+      })
+        .send()
+        editedOne.geometry = response.body.features[0].geometry;
     let editedList = await model.findByIdAndUpdate(listId,editedOne,{runValidators:true});
     if(typeof req.file !== "undefined"){
     let{path:url,filename}= req.file;
